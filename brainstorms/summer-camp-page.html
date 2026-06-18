@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpeakUp Camp — Camp Intensif de Langue Juillet 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FF6B35;
+      --yellow: #FFD23F;
+      --green: #06D6A0;
+      --navy: #1A1A2E;
+      --cream: #FFF8F0;
+      --white: #FFFFFF;
+      --gray: #6B7280;
+      --light: #F3F4F6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 14px 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 999;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 900; color: var(--orange); letter-spacing: -0.5px; }
+    .nav-logo span { color: var(--green); }
+    .nav-cta {
+      background: var(--orange); color: white;
+      padding: 10px 24px; border-radius: 50px;
+      font-weight: 800; font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(255,107,53,0.35);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,53,0.45); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FF6B35 0%, #FFD23F 50%, #06D6A0 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      background: white; color: var(--orange);
+      font-weight: 800; font-size: 0.85rem;
+      padding: 8px 20px; border-radius: 50px;
+      margin-bottom: 24px;
+      display: inline-block;
+      animation: bounce 2s infinite;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+    .hero h1 em { font-style: normal; color: var(--navy); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.92);
+      max-width: 680px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-camps {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 40px;
+    }
+    .camp-pill {
+      background: white; border-radius: 50px;
+      padding: 14px 30px;
+      font-weight: 800; font-size: 1rem;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      transition: transform 0.2s;
+    }
+    .camp-pill:hover { transform: scale(1.05); }
+    .camp-pill.fr { color: #2563EB; }
+    .camp-pill.en { color: #DC2626; }
+    .hero-cta {
+      background: var(--navy); color: white;
+      padding: 18px 48px; border-radius: 50px;
+      font-size: 1.1rem; font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .hero-urgency {
+      margin-top: 20px;
+      color: var(--navy);
+      font-weight: 700; font-size: 0.95rem;
+      background: rgba(255,255,255,0.7);
+      padding: 8px 20px; border-radius: 50px;
+      display: inline-block;
+    }
+    .floating { animation: float 4s ease-in-out infinite; }
+    .floating:nth-child(2) { animation-delay: 1s; }
+    .floating:nth-child(3) { animation-delay: 2s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+    .emojis-row {
+      font-size: 2.2rem;
+      margin-bottom: 28px;
+      display: flex; gap: 12px; justify-content: center;
+    }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 28px 5%;
+      display: flex; justify-content: center;
+      flex-wrap: wrap; gap: 40px;
+    }
+    .stat { text-align: center; color: white; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--yellow); }
+    .stat-label { font-size: 0.85rem; opacity: 0.75; margin-top: 2px; }
+
+    /* ─── SECTION GENERAL ─── */
+    section { padding: 80px 5%; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.8rem; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2; margin-bottom: 20px;
+      color: var(--navy);
+    }
+    .lead {
+      font-size: 1.1rem; color: var(--gray);
+      line-height: 1.8; max-width: 680px;
+    }
+
+    /* ─── PROBLEM ─── */
+    .problem { background: white; }
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .problem-card {
+      background: var(--cream);
+      border-radius: 20px; padding: 28px;
+      border-left: 4px solid var(--orange);
+      transition: transform 0.2s;
+    }
+    .problem-card:hover { transform: translateY(-4px); }
+    .problem-icon { font-size: 2rem; margin-bottom: 12px; }
+    .problem-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+
+    /* ─── SOLUTION ─── */
+    .solution { background: var(--cream); }
+    .solution-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; margin-top: 40px;
+    }
+    @media(max-width: 700px) { .solution-inner { grid-template-columns: 1fr; } }
+    .solution-visual {
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      border-radius: 30px; padding: 40px;
+      text-align: center; font-size: 5rem;
+      box-shadow: 0 20px 60px rgba(255,107,53,0.3);
+    }
+    .check-list { list-style: none; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      margin-bottom: 16px; font-size: 1rem; line-height: 1.5;
+    }
+    .check-list li::before {
+      content: '✅'; font-size: 1.1rem; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ─── CAMPS ─── */
+    .camps { background: white; }
+    .camps-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 30px; margin-top: 40px;
+    }
+    @media(max-width: 700px) { .camps-grid { grid-template-columns: 1fr; } }
+    .camp-card {
+      border-radius: 24px; padding: 40px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .camp-card:hover { transform: translateY(-8px); }
+    .camp-card.fr {
+      background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+      border: 2px solid #93C5FD;
+      box-shadow: 0 8px 30px rgba(37,99,235,0.1);
+    }
+    .camp-card.en {
+      background: linear-gradient(135deg, #FFF1F2, #FFE4E6);
+      border: 2px solid #FCA5A5;
+      box-shadow: 0 8px 30px rgba(220,38,38,0.1);
+    }
+    .camp-flag { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+    .camp-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; margin-bottom: 10px;
+    }
+    .camp-card.fr h3 { color: #1D4ED8; }
+    .camp-card.en h3 { color: #B91C1C; }
+    .camp-card p { color: var(--gray); line-height: 1.6; }
+
+    /* ─── PROGRAMME ─── */
+    .programme { background: var(--navy); }
+    .programme h2 { color: white; }
+    .programme .section-tag { color: var(--yellow); }
+    .weeks {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .week-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 28px;
+      transition: background 0.3s, transform 0.3s;
+      text-align: center;
+    }
+    .week-card:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-4px);
+    }
+    .week-num {
+      font-size: 0.75rem; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 8px;
+    }
+    .week-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+    .week-title {
+      font-size: 1.1rem; font-weight: 900; color: white; margin-bottom: 10px;
+    }
+    .week-desc { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* ─── VALUE STACK ─── */
+    .value { background: var(--cream); }
+    .value-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px; margin-top: 40px;
+    }
+    .value-card {
+      background: white; border-radius: 20px; padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .value-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .value-icon { font-size: 2rem; margin-bottom: 14px; }
+    .value-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+    .value-card p { font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+    .value-tag {
+      display: inline-block;
+      background: #DCFCE7; color: #166534;
+      font-size: 0.75rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 50px;
+      margin-top: 10px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about { background: white; }
+    .about-inner {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 40px; align-items: center; margin-top: 40px;
+    }
+    @media(max-width: 600px) { .about-inner { grid-template-columns: 1fr; } }
+    .about-avatar {
+      width: 160px; height: 160px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      box-shadow: 0 8px 30px rgba(255,107,53,0.3);
+      flex-shrink: 0;
+    }
+    .about-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; margin-bottom: 6px;
+    }
+    .about-title { color: var(--orange); font-weight: 700; margin-bottom: 16px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag {
+      background: var(--cream); color: var(--navy);
+      font-size: 0.8rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 50px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .about p { color: var(--gray); line-height: 1.8; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: var(--cream); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px; margin-top: 40px;
+    }
+    .testi-card {
+      background: white; border-radius: 20px; padding: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      position: relative;
+      transition: transform 0.2s;
+    }
+    .testi-card:hover { transform: translateY(-4px); }
+    .testi-card::before {
+      content: '"';
+      position: absolute; top: 16px; right: 24px;
+      font-size: 5rem; color: var(--orange); opacity: 0.12;
+      font-family: Georgia, serif; line-height: 1;
+    }
+    .stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testi-card p { color: #374151; line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 800; font-size: 0.9rem; }
+    .testi-role { font-size: 0.78rem; color: var(--gray); margin-top: 2px; }
+
+    /* ─── GUARANTEE ─── */
+    .guarantee {
+      background: linear-gradient(135deg, #06D6A0, #0EA5E9);
+      padding: 80px 5%;
+    }
+    .guarantee-inner {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .guarantee-badge {
+      width: 100px; height: 100px;
+      background: white; border-radius: 50%;
+      margin: 0 auto 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      animation: spin-slow 8s linear infinite;
+    }
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .guarantee h2 { color: white; margin-bottom: 16px; }
+    .guarantee p { color: rgba(255,255,255,0.9); font-size: 1.1rem; line-height: 1.8; }
+
+    /* ─── PRICING ─── */
+    .pricing { background: white; }
+    .pricing-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; max-width: 700px;
+      margin: 40px auto 0;
+    }
+    @media(max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .price-card {
+      border-radius: 24px; padding: 36px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .price-card:hover { transform: translateY(-6px); }
+    .price-card.early {
+      background: linear-gradient(135deg, var(--orange), #FF9F6B);
+      box-shadow: 0 12px 40px rgba(255,107,53,0.35);
+    }
+    .price-card.normal {
+      background: var(--cream);
+      border: 2px solid var(--light);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .price-label {
+      font-size: 0.8rem; font-weight: 800; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .price-card.early .price-label { color: rgba(255,255,255,0.8); }
+    .price-card.normal .price-label { color: var(--gray); }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 700; line-height: 1;
+    }
+    .price-card.early .price-amount { color: white; }
+    .price-card.normal .price-amount { color: var(--navy); }
+    .price-currency {
+      font-size: 1.2rem; font-weight: 700; vertical-align: top; line-height: 1.8;
+    }
+    .price-deadline {
+      font-size: 0.85rem; margin-top: 8px;
+    }
+    .price-card.early .price-deadline { color: rgba(255,255,255,0.85); }
+    .price-card.normal .price-deadline { color: var(--gray); }
+    .price-btn {
+      display: block; margin-top: 20px;
+      padding: 14px 28px; border-radius: 50px;
+      font-weight: 800; font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .price-card.early .price-btn {
+      background: white; color: var(--orange);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .price-card.normal .price-btn {
+      background: var(--navy); color: white;
+    }
+    .price-btn:hover { transform: scale(1.04); }
+    .pricing-note {
+      text-align: center; margin-top: 24px;
+      color: var(--gray); font-size: 0.9rem;
+    }
+
+    /* ─── FAQ ─── */
+    .faq { background: var(--cream); }
+    .faq-list { margin-top: 40px; }
+    .faq-item {
+      background: white; border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .faq-q {
+      padding: 20px 24px;
+      font-weight: 800; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--cream); }
+    .faq-q .icon { font-size: 1.2rem; transition: transform 0.3s; }
+    .faq-a {
+      padding: 0 24px;
+      max-height: 0; overflow: hidden;
+      color: var(--gray); line-height: 1.7;
+      transition: max-height 0.4s ease, padding 0.3s;
+      font-size: 0.95rem;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding: 0 24px 20px;
+    }
+    .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: linear-gradient(135deg, var(--navy), #2D2D4E);
+      padding: 100px 5%;
+      text-align: center;
+    }
+    .final-cta h2 {
+      color: white; margin-bottom: 16px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+    .final-cta p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 36px; }
+    .final-cta .cta-big {
+      background: linear-gradient(135deg, var(--orange), var(--yellow));
+      color: white; padding: 20px 56px;
+      border-radius: 50px; font-size: 1.2rem; font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 12px 40px rgba(255,107,53,0.4);
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .final-cta .cta-big:hover { transform: translateY(-4px); box-shadow: 0 16px 50px rgba(255,107,53,0.5); }
+    .final-cta-sub { margin-top: 16px; color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 30px 5%; text-align: center;
+      color: rgba(255,255,255,0.4); font-size: 0.85rem;
+    }
+
+    /* ─── RESPONSIVE HELPERS ─── */
+    @media(max-width: 768px) {
+      section { padding: 60px 5%; }
+      .stats-bar { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">SpeakUp<span>Camp</span> 🌍</div>
+  <a href="#inscription" class="nav-cta">Je m'inscris →</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-badge">🔥 Juillet 2026 · Places limitées</div>
+  <div class="emojis-row">
+    <span class="floating">🌍</span>
+    <span class="floating">📚</span>
+    <span class="floating">🤖</span>
+    <span class="floating">✨</span>
+    <span class="floating">🏆</span>
+  </div>
+  <h1>Ton enfant prend la parole.<br/><em>Pour de vrai. En 1 mois.</em></h1>
+  <p class="hero-sub">
+    Un camp intensif en ligne qui transforme des enfants timides en communicants confiants,
+    en français ou en anglais, grâce à une méthode vivante, moderne, et boostée à l'IA.
+  </p>
+  <div class="hero-camps">
+    <div class="camp-pill fr">🇫🇷 Camp Prends la Parole</div>
+    <div class="camp-pill en">🇬🇧 SpeakUp Camp</div>
+  </div>
+  <a href="#inscription" class="hero-cta">Je réserve ma place maintenant</a>
+  <div class="hero-urgency">⚡ Tarif early bird : 1 000 DH jusqu'au 25 juin</div>
+</section>
+
+<!-- ─── STATS ─── -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">10</div>
+    <div class="stat-label">enfants max par groupe</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">12</div>
+    <div class="stat-label">sessions live en juillet</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">en ligne, de partout</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">2</div>
+    <div class="stat-label">langues au choix</div>
+  </div>
+</div>
+
+<!-- ─── PROBLEM ─── -->
+<section class="problem">
+  <div class="container">
+    <div class="section-tag">Le problème</div>
+    <h2>L'été qui passe… et les langues qui s'oublient 😮</h2>
+    <p class="lead">Tu le vois chaque année. Juillet arrive, l'école s'arrête, et en septembre ton enfant a tout oublié. Ou pire : il hésite encore, rougit, refuse de parler.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">😶</div>
+        <h3>La peur de parler</h3>
+        <p>Les cours ne suffisent pas à briser le blocage. L'enfant sait la règle mais ne parle pas.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🔄</div>
+        <h3>L'été efface tout</h3>
+        <p>Sans pratique régulière, les acquis fondent vite. L'année suivante repart à zéro.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">😴</div>
+        <h3>Les méthodes ennuyeuses</h3>
+        <p>Les cours classiques n'engagent pas. Les enfants décrochent au bout de 10 minutes.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🤖</div>
+        <h3>L'IA arrive, ils ne sont pas prêts</h3>
+        <p>La langue et la technologie vont ensemble aujourd'hui. Ne pas les préparer, c'est les laisser derrière.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTION ─── -->
+<section class="solution">
+  <div class="container">
+    <div class="section-tag">La solution</div>
+    <h2>Un camp d'été qui change vraiment les choses ✨</h2>
+    <div class="solution-inner">
+      <div class="solution-visual">🎯<br/>🌍🤖📢</div>
+      <div>
+        <ul class="check-list">
+          <li>Sessions live interactives et dynamiques, pas de vidéos préenregistrées</li>
+          <li>Méthode par l'action : on parle, on crée, on joue dans la langue</li>
+          <li>Groupe de 10 enfants max pour un suivi vraiment personnalisé</li>
+          <li>Une semaine entière dédiée à la création avec l'IA</li>
+          <li>Rapport de progression envoyé aux parents chaque semaine</li>
+          <li>Certificat officiel de réussite remis à la fin du mois</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CAMPS ─── -->
+<section class="camps">
+  <div class="container">
+    <div class="section-tag">Choisir ta langue</div>
+    <h2>Deux camps, une seule mission : te faire parler 🗣️</h2>
+    <div class="camps-grid">
+      <div class="camp-card fr">
+        <span class="camp-flag">🇫🇷</span>
+        <h3>Camp Prends la Parole</h3>
+        <p>Pour les enfants qui apprennent le français ou qui veulent gagner en fluidité, en confiance, et en élégance dans la langue de Molière.</p>
+      </div>
+      <div class="camp-card en">
+        <span class="camp-flag">🇬🇧</span>
+        <h3>SpeakUp Camp</h3>
+        <p>Pour les enfants qui veulent parler anglais avec aisance, sans accent hésitant, et comprendre le monde moderne qui parle cette langue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROGRAMME ─── -->
+<section class="programme">
+  <div class="container">
+    <div class="section-tag">Le programme</div>
+    <h2>4 semaines. 1 transformation. 🚀</h2>
+    <p class="lead" style="color:rgba(255,255,255,0.7);">Chaque semaine a un objectif clair. On avance ensemble, étape par étape, jusqu'à la grande présentation finale.</p>
+    <div class="weeks">
+      <div class="week-card">
+        <div class="week-num">Semaine 1</div>
+        <span class="week-icon">🔓</span>
+        <div class="week-title">Déverrouiller</div>
+        <div class="week-desc">Briser la peur de parler, vocabulaire essentiel, jeux de rôle, confiance de base. On entre dans la langue sans stress.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Semaine 2</div>
+        <span class="week-icon">🏗️</span>
+        <div class="week-title">Construire</div>
+        <div class="week-desc">Grammaire vivante à travers des histoires, des débats simples, des mini-défis. La structure qui soutient la parole.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Semaine 3</div>
+        <span class="week-icon">🤖</span>
+        <div class="week-title">Créer avec l'IA</div>
+        <div class="week-desc">Chaque enfant crée son propre projet interactif dans la langue en utilisant des outils IA. Double apprentissage : langue + technologie.</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Semaine 4</div>
+        <span class="week-icon">🏆</span>
+        <div class="week-title">Performer</div>
+        <div class="week-desc">Présentation finale, simulation de vraie conversation, remise du certificat. L'enfant prouve sa transformation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VALUE STACK ─── -->
+<section class="value">
+  <div class="container">
+    <div class="section-tag">Ce qui est inclus</div>
+    <h2>Tout ce que ton enfant reçoit 🎁</h2>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon">🎥</div>
+        <h3>12 sessions live interactives</h3>
+        <p>Lundi, mercredi, vendredi — 10h à 11h30. Sur Google Meet. Avec Fadwa, en direct, pas un robot.</p>
+        <span class="value-tag">Inclus</span>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📊</div>
+        <h3>Rapport parental hebdomadaire</h3>
+        <p>Chaque semaine, tu reçois un compte-rendu détaillé des progrès de ton enfant.</p>
+        <span class="value-tag">Inclus</span>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💬</div>
+        <h3>Groupe privé parents WhatsApp</h3>
+        <p>Ressources, tips, et accès direct à Fadwa pour les questions entre les sessions.</p>
+        <span class="value-tag">Inclus</span>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎓</div>
+        <h3>Certificat personnalisé</h3>
+        <p>À la fin du mois, chaque enfant reçoit un certificat officiel de réussite avec son nom.</p>
+        <span class="value-tag">Inclus</span>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔁</div>
+        <h3>Replays des sessions</h3>
+        <p>Si ton enfant rate une session, le replay est disponible pour ne rien manquer.</p>
+        <span class="value-tag">Inclus</span>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤖</div>
+        <h3>Atelier IA inclus</h3>
+        <p>Une semaine entière à créer avec l'intelligence artificielle. Un skill rare que peu d'enfants ont aujourd'hui.</p>
+        <span class="value-tag">Bonus exclusif</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about">
+  <div class="container">
+    <div class="section-tag">Ton coach</div>
+    <h2>Fadwa Naboulssi ✨</h2>
+    <div class="about-inner">
+      <div class="about-avatar">👩‍🏫</div>
+      <div>
+        <div class="about-name">Fadwa Naboulssi</div>
+        <div class="about-title">Experte en communication · Prof de français & anglais · Coach · Spécialiste IA</div>
+        <div class="tags-row">
+          <span class="tag">🎓 Master Business</span>
+          <span class="tag">🌍 Bilingue FR/EN</span>
+          <span class="tag">🤖 AI Educator</span>
+          <span class="tag">🎤 Coach communication</span>
+          <span class="tag">📱 Marketing digital</span>
+          <span class="tag">✍️ Branding</span>
+        </div>
+        <p>Je ne suis pas une prof classique. Je suis une communicante qui enseigne. Avec un background en coaching, en marketing, en IA, et en prise de parole, j'apprends à tes enfants quelque chose que l'école ne donne pas : <strong>le courage de s'exprimer dans le monde tel qu'il est aujourd'hui.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-tag">Ils en parlent</div>
+    <h2>Ce que disent les parents et collègues 💬</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"En 3 semaines, ma fille a commencé à regarder des dessins animés en anglais <em>volontairement</em>. Elle ne voulait même plus s'arrêter. Fadwa a une façon d'enseigner qui donne envie, vraiment."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#FEF9C3;">👩</div>
+          <div>
+            <div class="testi-name">Nadia R.</div>
+            <div class="testi-role">Maman de Yasmine, 11 ans · Casablanca</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Mon fils était très timide à l'oral. Après un mois, il a présenté un projet entier en français devant toute sa famille. On n'en revenait pas. Fadwa ne laisse aucun enfant derrière."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#DCFCE7;">👨</div>
+          <div>
+            <div class="testi-name">Karim T.</div>
+            <div class="testi-role">Papa de Adam, 13 ans · Rabat</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"J'ai recommandé Fadwa à toutes mes collègues. Elle a une énergie rare, une pédagogie moderne, et une capacité à expliquer les choses clairement et avec enthousiasme. Professionnelle et humaine à la fois."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#EDE9FE;">👩‍💼</div>
+          <div>
+            <div class="testi-name">Salma M.</div>
+            <div class="testi-role">Directrice d'école · Marrakech</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GUARANTEE ─── -->
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <div class="guarantee-badge">🛡️</div>
+    <div class="section-tag" style="color:rgba(255,255,255,0.7);">Notre promesse</div>
+    <h2>Zéro risque pour toi 💪</h2>
+    <p>Si à la fin du mois ton enfant ne peut pas tenir une conversation de 5 minutes dans la langue choisie, je te rembourse 50% ou je t'offre un mois supplémentaire gratuitement. Je m'engage sur les résultats parce que je crois en ma méthode.</p>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section class="pricing" id="inscription">
+  <div class="container" style="text-align:center;">
+    <div class="section-tag">Tarifs</div>
+    <h2>Choisis ton moment 💳</h2>
+    <div class="pricing-grid">
+      <div class="price-card early">
+        <div class="price-label">🔥 Early Bird</div>
+        <div class="price-amount"><span class="price-currency">DH</span> 1 000</div>
+        <div class="price-deadline">Jusqu'au 25 juin uniquement</div>
+        <a href="https://wa.me/212XXXXXXXXX?text=Bonjour%20Fadwa%2C%20je%20souhaite%20m%27inscrire%20au%20SpeakUp%20Camp%20tarif%20early%20bird%20%F0%9F%94%A5" class="price-btn" target="_blank">Je prends ce tarif →</a>
+      </div>
+      <div class="price-card normal">
+        <div class="price-label">Tarif normal</div>
+        <div class="price-amount"><span class="price-currency">DH</span> 1 500</div>
+        <div class="price-deadline">Jusqu'au 30 juin</div>
+        <a href="https://wa.me/212XXXXXXXXX?text=Bonjour%20Fadwa%2C%20je%20souhaite%20m%27inscrire%20au%20SpeakUp%20Camp%20%F0%9F%93%9A" class="price-btn" target="_blank">Je m'inscris →</a>
+      </div>
+    </div>
+    <p class="pricing-note">Paiement par virement bancaire ou CashPlus · Confirmation par WhatsApp · <strong>Premier cours : mercredi 2 juillet</strong></p>
+    <p class="pricing-note" style="margin-top:8px;">📌 Max 10 enfants · Places limitées · Langue au choix (français ou anglais)</p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq">
+  <div class="container">
+    <div class="section-tag">Questions fréquentes</div>
+    <h2>On répond à tout 🙋</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          Quel niveau faut-il pour s'inscrire ?
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">Tous les niveaux sont acceptés, débutant inclus. Le camp s'adapte au groupe. L'objectif n'est pas un niveau académique, c'est la confiance à l'oral.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          Mon enfant peut-il faire les deux langues ?
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">Oui, si des places sont disponibles dans les deux cohortes. Contacte Fadwa directement sur WhatsApp pour vérifier la disponibilité.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          Que se passe-t-il si mon enfant rate une session ?
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">Un replay de chaque session est disponible. Ton enfant peut regarder à son rythme et rattraper ce qu'il a manqué avant la prochaine session.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          L'atelier IA, c'est pour quel âge ?
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">Adapté pour les 8-16 ans. Les outils utilisés sont simples, visuels, et conçus pour les enfants. Aucune compétence technique requise.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggle(this)">
+          Comment fonctionne la garantie ?
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">Si à la fin du mois ton enfant ne peut pas tenir une conversation de 5 minutes, tu reçois 50% remboursé ou un mois supplémentaire gratuit. On te demandera juste de t'assurer qu'il a bien participé aux sessions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section class="final-cta">
+  <h2>Ton enfant mérite cet été 🌟</h2>
+  <p>10 places. Juillet entier. Une transformation qui dure toute la vie.<br/>Ne laisse pas passer cette chance.</p>
+  <a href="https://wa.me/212XXXXXXXXX?text=Bonjour%20Fadwa%2C%20je%20veux%20inscrire%20mon%20enfant%20au%20SpeakUp%20Camp%20%F0%9F%9A%80" class="cta-big" target="_blank">Réserver une place maintenant 🚀</a>
+  <div class="final-cta-sub">Questions ? WhatsApp direct · Réponse en moins de 24h</div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>© 2026 Fadwa Naboulssi · SpeakUp Camp · Tous droits réservés</p>
+  <p style="margin-top:8px;">coach.fadwa.naboulssi@gmail.com</p>
+</footer>
+
+<script>
+  function toggle(el) {
+    const item = el.parentElement;
+    item.classList.toggle('open');
+  }
+
+  // Animate stats on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.style.opacity = '1';
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.value-card, .week-card, .testi-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.5s ease, transform 0.3s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
