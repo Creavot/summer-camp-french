@@ -376,7 +376,7 @@
     <div class="section-tag" data-i18n="about-tag">Ton coach</div>
     <h2>Fadwa Naboulssi ✨</h2>
     <div class="about-inner">
-      <div class="about-avatar">👩‍🏫</div>
+      <div class="about-avatar"><img src="fadwa.png" alt="Fadwa Naboulssi" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"/></div>
       <div>
         <div class="about-name">Fadwa Naboulssi</div>
         <div class="about-title-sub" data-i18n="about-title">Experte en communication, prof de français et anglais, coach, spécialiste IA</div>
@@ -526,9 +526,9 @@ const T = {
     't1-p': '"En 3 semaines, ma fille a commencé à regarder des dessins animés en anglais <em>volontairement</em>. Elle ne voulait même plus s\'arrêter. Fadwa a une façon d\'enseigner qui donne vraiment envie."',
     't1-name': "Nadia R.", 't1-role': "Maman de Yasmine, 11 ans, Casablanca",
     't2-p': '"Mon fils était très timide à l\'oral. Après un mois, il a présenté un projet entier en français devant toute sa famille. On n\'en revenait pas. Fadwa ne laisse aucun enfant derrière."',
-    't2-name': "Hicham", 't2-role': "Papa de Adam, 13 ans, Marrakech",
+    't2-name': "Hicham N.", 't2-role': "Papa de Adam, 13 ans, Marrakech",
     't3-p': '"J\'ai recommandé Fadwa à toutes mes collègues. Elle a une énergie rare, une pédagogie moderne, et une capacité à expliquer les choses clairement et avec enthousiasme. Professionnelle et humaine à la fois."',
-    't3-name': "Fatima", 't3-role': "Maman de Majda, Agadir",
+    't3-name': "Fatima L.", 't3-role': "Maman de Majda, Agadir",
     'guar-tag': "Notre promesse", 'guar-h2': "Zéro risque pour toi 💪",
     'guar-p': "Si à la fin du mois tu n'observes pas de progrès visibles et mesurables chez ton enfant à l'oral, je t'offre un deuxième mois complet gratuitement. Aucune condition. Aucune question posée. C'est ma promesse, parce que je crois en ma méthode.",
     'price-tag': "Tarif", 'price-h2': "Rejoins l'aventure 💳",
@@ -591,9 +591,9 @@ const T = {
     't1-p': '"In 3 weeks, my daughter started watching cartoons in English <em>on her own</em>. She didn\'t want to stop. Fadwa has a way of teaching that genuinely makes you want to learn."',
     't1-name': "Nadia R.", 't1-role': "Mom of Yasmine, 11, Casablanca",
     't2-p': '"My son was very shy about speaking. After one month, he presented a full project in English in front of the whole family. We couldn\'t believe it. Fadwa leaves no child behind."',
-    't2-name': "Hicham", 't2-role': "Dad of Adam, 13, Marrakech",
+    't2-name': "Hicham N.", 't2-role': "Dad of Adam, 13, Marrakech",
     't3-p': '"I recommended Fadwa to all my colleagues. She has rare energy, modern pedagogy, and the ability to explain things clearly and enthusiastically. Professional and human at the same time."',
-    't3-name': "Fatima", 't3-role': "Mom of Majda, Agadir",
+    't3-name': "Fatima L.", 't3-role': "Mom of Majda, Agadir",
     'guar-tag': "Our promise", 'guar-h2': "Zero risk for you 💪",
     'guar-p': "If by the end of July you don't see clear, measurable improvement in your child's speaking confidence, I give you a full second month completely free. No conditions. No questions asked. That is my commitment, because I believe in my method.",
     'price-tag': "Pricing", 'price-h2': "Join the adventure 💳",
@@ -634,6 +634,8 @@ function setLang(l) {
 
 document.getElementById('pill-fr').addEventListener('click', function() { setLang('fr'); });
 document.getElementById('pill-en').addEventListener('click', function() { setLang('en'); });
+document.querySelector('.camp-card.fr').addEventListener('click', function() { setLang('fr'); });
+document.querySelector('.camp-card.en').addEventListener('click', function() { setLang('en'); });
 
 document.querySelectorAll('.faq-q').forEach(function(q) {
   q.addEventListener('click', function() {
