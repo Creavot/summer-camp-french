@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Instagram Poster – SpeakUp Camp (EN)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Playfair+Display:ital,wght@0,800;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a0a;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .scale-wrapper {
+      width: min(100vw, 100vh);
+      height: min(100vw, 100vh);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .poster {
+      width: 1080px; height: 1080px;
+      transform-origin: top left;
+      background: linear-gradient(150deg, #1A1A2E 0%, #12122A 50%, #0D1B2A 100%);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 80px 100px;
+    }
+
+    .circle {
+      position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .c1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,107,53,0.12) 0%, transparent 70%); top: -150px; right: -150px; }
+    .c2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(6,214,160,0.08) 0%, transparent 70%); bottom: -100px; left: -100px; }
+    .c3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,210,63,0.07) 0%, transparent 70%); top: 350px; left: -50px; }
+
+    .poster::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .badge {
+      background: rgba(255,107,53,0.12);
+      border: 1.5px solid rgba(255,107,53,0.35);
+      color: #FF6B35;
+      font-weight: 800; font-size: 0.95rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 10px 28px; border-radius: 50px;
+      margin-bottom: 40px; position: relative;
+    }
+
+    .hook {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.2rem; line-height: 1.15;
+      color: white; margin-bottom: 28px;
+      position: relative;
+    }
+    .hook em { font-style: italic; color: #FFD23F; }
+
+    .sep {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, #FF6B35, #06D6A0);
+      border-radius: 2px; margin: 0 auto 28px;
+      position: relative;
+    }
+
+    .sub {
+      font-size: 1.35rem; color: rgba(255,255,255,0.78);
+      line-height: 1.7; margin-bottom: 44px;
+      max-width: 740px; position: relative;
+    }
+    .sub strong { color: #06D6A0; font-weight: 900; }
+
+    .pills {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 44px;
+      position: relative;
+    }
+    .pill {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.85);
+      padding: 9px 22px; border-radius: 50px;
+      font-size: 0.92rem; font-weight: 700;
+    }
+
+    .early {
+      background: linear-gradient(135deg, #FF6B35 0%, #FFD23F 100%);
+      color: white; font-weight: 900; font-size: 1.25rem;
+      padding: 18px 48px; border-radius: 50px;
+      margin-bottom: 36px; position: relative;
+      box-shadow: 0 12px 40px rgba(255,107,53,0.4);
+      letter-spacing: 0.3px;
+    }
+    .early-sub {
+      font-size: 0.85rem; font-weight: 700;
+      color: rgba(255,255,255,0.85); margin-top: 6px; letter-spacing: 0.3px;
+    }
+
+    .url-block { position: relative; }
+    .url-label {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.78rem; letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 6px;
+    }
+    .url {
+      color: #06D6A0; font-size: 1.2rem;
+      font-weight: 900; letter-spacing: 0.5px;
+    }
+
+    .brand {
+      position: absolute; bottom: 28px;
+      left: 0; right: 0; text-align: center;
+    }
+    .brand-name {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem; font-weight: 900;
+      letter-spacing: 1px; margin-bottom: 4px;
+    }
+    .brand-sub {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo {
+      position: absolute; top: 40px; right: 50px;
+      color: white; font-size: 1.1rem; font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: #06D6A0; }
+  </style>
+</head>
+<body>
+<div class="scale-wrapper" id="wrapper">
+  <div class="poster" id="poster">
+
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+
+    <div class="logo">SpeakUp<span>Camp</span> 🌍</div>
+
+    <div class="badge">🔥 Intensive Language Camp · July 2026</div>
+
+    <h1 class="hook">
+      Your child is learning the language...<br/>
+      <em>but refuses to speak?</em>
+    </h1>
+
+    <div class="sep"></div>
+
+    <p class="sub">
+      In 1 month, we give them what school<br/>
+      never did:<br/>
+      <strong>the confidence to speak with ease, fluency, and conviction.</strong>
+    </p>
+
+    <div class="pills">
+      <span class="pill">🇫🇷 French</span>
+      <span class="pill">🇬🇧 English</span>
+      <span class="pill">👧 Ages 8 to 16</span>
+      <span class="pill">👥 Max 10 kids</span>
+      <span class="pill">💻 100% online</span>
+      <span class="pill">🤖 AI Project included</span>
+    </div>
+
+    <div class="early">
+      🔥 1,000 DH until June 25
+      <div class="early-sub">↑ Goes up to 1,500 DH on June 26 · Limited spots</div>
+    </div>
+
+    <div class="url-block">
+      <div class="url-label">Discover the full program</div>
+      <div class="url">summer-camp-french.vercel.app</div>
+    </div>
+
+    <div class="brand">
+      <div class="brand-name">with Fadwa Naboulssi</div>
+      <div class="brand-sub">8+ years training communicators internationally · Bilingual FR/EN · AI Educator</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function scale() {
+    var size = Math.min(window.innerWidth, window.innerHeight);
+    var s = size / 1080;
+    document.getElementById('poster').style.transform = 'scale(' + s + ')';
+    document.getElementById('wrapper').style.width = size + 'px';
+    document.getElementById('wrapper').style.height = size + 'px';
+  }
+  scale();
+  window.addEventListener('resize', scale);
+</script>
+</body>
+</html>
